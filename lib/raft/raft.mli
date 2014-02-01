@@ -35,6 +35,7 @@ module Make : functor (Server : SERVER) -> functor (Log : LOG) -> sig
   val receive_vote      : [ `Candidate ] t -> [ `Candidate ] t
   val is_now_leader     : [ `Candidate ] t -> [ `Leader ] t option
 
-  val append            : Log.t -> 'a t -> 'a t
+  val receive_log       : Log.t -> 'a t -> [ `Follower ] t
+  val append_log        : Log.t -> [ `Leader ] t -> [ `Leader ] t
 
 end
