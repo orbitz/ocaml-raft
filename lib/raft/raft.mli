@@ -2,7 +2,6 @@ module type LOG = sig
   type elt
   type t
 
-  (* Not required to be pure *)
   val append : elt -> t -> t option
 end
 
@@ -33,7 +32,8 @@ module Make : functor (Server : SERVER) -> functor (Log : LOG) -> sig
   val heartbeat_timeout : [ `Follower] t -> [ `Candidate ] t
 
   val election_timeout  : [ `Candidate ] t -> [ `Candidate ] t
-  val receive_vote      : [ `Candidate ] t -> [ `Candidate | `Leader ] t
+  val receive_vote      : [ `Candidate ] t -> [ `Candidate ] t
+  val is_now_leader     : [ `Candidate ] t -> [ `Leader ] t option
 
   val append            : Log.t -> 'a t -> 'a t
 
