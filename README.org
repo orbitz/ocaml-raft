@@ -1,2 +1,4 @@
 * About
-Template for my usual ocaml projects
+An Ocaml implementation of the Raft algorithm.  This is a pure library and only
+implements the state machine of Raft.
+

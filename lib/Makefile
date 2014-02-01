@@ -1,4 +1,4 @@
-SUBDIRS = example
+SUBDIRS = raft
 
 all_apps = $(SUBDIRS)
 
